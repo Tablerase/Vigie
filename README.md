@@ -1,5 +1,5 @@
 # Vigie
-Social media aggregator project
+Social media aggregator project - Local webapp
 
 ## Objectives
 * gather data around your content
@@ -9,3 +9,10 @@ Social media aggregator project
 
 ## Resources
 ...
+
+## Requirement
+* [python3](https://www.python.org/downloads/)
+    * [flask](https://pypi.org/project/Flask/)
+        * [flask-session](https://pypi.org/project/Flask-Session/)
+    * [cs50](https://pypi.org/project/cs50/)
+* sqlite3 (for dev workside)

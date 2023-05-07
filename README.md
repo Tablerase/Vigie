@@ -12,7 +12,13 @@ Social media aggregator project - Local webapp
 
 ## Requirement
 * [python3](https://www.python.org/downloads/)
+    `python3 --version #check version`
+    `sudo apt update`
+    `sudo apt install python3`
     * [flask](https://pypi.org/project/Flask/)
+        `pip install Flask`
         * [flask-session](https://pypi.org/project/Flask-Session/)
+            `pip install Flask-Session`
     * [cs50](https://pypi.org/project/cs50/)
+        `pip install cs50`
 * sqlite3 (for dev workside)

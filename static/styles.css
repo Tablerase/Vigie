@@ -1,0 +1,118 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+
+
+/* -------------- Color Theme --------------- */
+:root {
+    --primary: SlateBlue; /* purple */
+    --secondary: DimGray; /* grey */
+    --success: LightGreen; /* green */
+    --light: #f8f9fa; /* grey light */
+    --dark: #212529; /* grey dark */
+}
+
+header
+{
+  padding: 10px;
+}
+body
+{
+  margin: 50px;
+}
+h1
+{
+  text-align: center;
+  padding: 10px;
+  color: var(--primary, grey);
+}
+h2
+{
+  text-align: center;
+  padding: 6px;
+  color: var(--secondary, purple);
+}
+
+
+
+
+/* ---------------- Scrollbar ---------------- */
+html
+{
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  direction: ltr;
+  scrollbar-color: #d4aa7000 #e4e4e400;
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #ffffff
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-clip: content-box;
+  background-color: var(--primary, purple);
+}
+/* ---------------------- Back to top bouton ------------------- */
+#back-to-top
+{
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: none; /* Set a background color */
+  color: none; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 0px; /* Some padding */
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.9);
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px; /* Rounded corners */
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#back-to-top .material-icons
+{
+  color: white;
+}
+#back-to-top:hover
+{
+  background-color: var(--primary, purple); /* Add a background change on hover */
+}

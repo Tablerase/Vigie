@@ -4,3 +4,4 @@ Flask-Session
 Flask-RESTful
 Jinja2
 requests
+cs50

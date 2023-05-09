@@ -1,0 +1,6 @@
+Flask
+Flask-Cors
+Flask-Session
+Flask-RESTful
+Jinja2
+requests

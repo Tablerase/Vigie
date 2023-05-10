@@ -1,8 +1,7 @@
-<p><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="200px"/> 
-
-# Vigie
-Social media aggregator project - Local webapp
-</p>
+<div><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="200px"/> 
+<h1>Vigie</h1>
+<figcaption> Social media aggregator project - Local webapp</figcaption>
+</div>
 
 ## Objectives
 * gather data around your content

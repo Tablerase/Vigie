@@ -1,3 +1,5 @@
+![logo for Vigie](/static/Media/Logo%20Vigie.svg)
+
 # Vigie
 Social media aggregator project - Local webapp
 

@@ -1,4 +1,4 @@
-<p><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="train &amp; tracks" /> 
+<p><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="200px"/> 
 
 # Vigie
 Social media aggregator project - Local webapp

@@ -1,7 +1,12 @@
-<div><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="200px" style="display: inline-block"/> 
-<h1 style="color: #D15E32">Vigie</h1>
-<p> Social media aggregator project - Local webapp</p>
-</div>
+<style
+    type="text/css">
+    h1 {color:#D15E32;}
+    a {color:#6687F3;}
+</style>
+
+# Vigie
+<img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="20%" align="right"/>
+Social media aggregator project - Local webapp
 
 ## Objectives
 * gather data around your content

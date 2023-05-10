@@ -1,42 +1,32 @@
 /* Size for brand */
 nav .navbar-brand
 {
-    font-size: xx-large;
+    font-size: large;
 }
 
-/* Colors for brand */
-nav .navbar-brand .blue
+/* Colors for brand title */
+nav .navbar-brand .title
 {
-    color: #537fbe;
+    color: var(--primary, SlateBlue);
+    padding-left: 20px;
 }
-nav .navbar-brand .red
-{
-    color: #ea433b;
-}
-nav .navbar-brand .yellow
-{
-    color: #f5b82e;
-}
-nav .navbar-brand .green
-{
-    color: #2e944b;
-}
-
-
 
 /* -------------- Color Theme --------------- */
 :root {
-    --primary: SlateBlue; /* purple */
-    --secondary: DimGray; /* grey */
-    --success: LightGreen; /* green */
-    --light: #f8f9fa; /* grey light */
-    --dark: #212529; /* grey dark */
+    --primary:#FFA957;
+    --bs-primary: #FFA957;
+    --secondary: #6687F3;
+    --success: LightGreen;
+    --light: #f8f9fa;
+    --dark: #212529;
 }
 
+/* page zoning */
 header
 {
-  padding: 10px;
+  padding-bottom: 50px;
 }
+
 body
 {
   margin: 50px;

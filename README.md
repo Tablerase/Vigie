@@ -1,6 +1,6 @@
-<div><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="200px"/> 
-<h1>Vigie</h1>
-<figcaption> Social media aggregator project - Local webapp</figcaption>
+<div><img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="200px" style="display: inline-block"/> 
+<h1 style="color: #D15E32">Vigie</h1>
+<p> Social media aggregator project - Local webapp</p>
 </div>
 
 ## Objectives

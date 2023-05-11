@@ -4,4 +4,19 @@ Flask-Session
 Flask-RESTful
 Jinja2
 requests
+
+# database query
 cs50
+
+
+
+# scrap
+    #for tweeter
+    twint
+    
+    # multy scraper
+    snscrape
+        # api tweeter not supported since api 2023 paid update
+
+# data testing
+pandas

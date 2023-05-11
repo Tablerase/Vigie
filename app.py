@@ -1,5 +1,6 @@
 import os
 
+# basics packages for flask site
 from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
@@ -8,6 +9,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from datetime import datetime
 from helpers import apology, login_required
+
+#api scrap data
+from scrap import twitter_hashtag
 
 # Configure application
 app = Flask(__name__)
@@ -22,7 +26,7 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///vigie.db")
-db.execute("CREATE TABLE IF NOT EXISTS stocks (stock TEXT NOT NULL,quantity NUMERIC NOT NULL,userid INTEGER NOT NULL,FOREIGN KEY(userid) REFERENCES users(id))")
+db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL)")
 
 # Make sure API key is set
 #if not os.environ.get("API_KEY"):

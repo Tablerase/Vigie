@@ -13,4 +13,4 @@ Social media aggregator project - Local webapp
 
 ## Config
 * make a file call `config.ini`
-* add your keys inside of it (configparser will access it directly - make it easier in case of a change of API keys)
+  * add your keys inside of it (configparser will access it directly - making it easier in case there is a change in API keys)

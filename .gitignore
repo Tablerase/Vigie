@@ -2,3 +2,5 @@
 .vscode/
 *__pycache__
 *.incapacited
+/incapacited
+config.ini

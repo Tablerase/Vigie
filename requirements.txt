@@ -8,15 +8,18 @@ requests
 # database query
 cs50
 
-
-
 # scrap
-    #for tweeter
-    twint
-    
+    #twitter
+    python-twitter
+    # - alternatives for web-site full integration
+        tweepy
+
     # multy scraper
     snscrape
-        # api tweeter not supported since api 2023 paid update
+        # api twitter not supported since api 2023 paid update
 
 # data testing
 pandas
+
+# share keys
+configparser

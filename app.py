@@ -10,8 +10,11 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
 from helpers import apology, login_required
 
-#api scrap data
+# api scrap data
 from scrap import twitter_hashtag
+
+# post
+from post import tweet_create
 
 # Configure application
 app = Flask(__name__)
@@ -105,6 +108,7 @@ def logout():
     # Redirect user to login form
     return redirect("/")
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     """Register user"""
@@ -138,3 +142,11 @@ def register():
             passwordh = generate_password_hash(password)  # hash password
             db.execute("INSERT INTO users(username, hash) VALUES(? , ?)", regname, passwordh)
             return redirect("/")
+        
+
+@app.route("/tweet/<msg>")
+@login_required
+def tweet():
+    
+    
+    return render_template("index.html")

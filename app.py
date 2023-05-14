@@ -21,7 +21,6 @@ app = Flask(__name__)
 
 # Custom filter
 
-
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -144,9 +143,8 @@ def register():
             return redirect("/")
         
 
-@app.route("/tweet/<msg>")
+@app.route("/tweet/create", methods=["GET", "POST"])
 @login_required
 def tweet():
     
-    
-    return render_template("index.html")
+    return redirect("/post.html")

@@ -5,6 +5,14 @@ nav .navbar-brand
     padding-left: 20px;
 }
 
+/* font icons */
+span.material-symbols-outlined
+{
+  position: relative;
+  top: 6.5px;
+  padding: 3px;
+}
+
 /* -------------- Color Theme --------------- */
 :root {
     --primary:#FFA957;

@@ -12,6 +12,12 @@ span.material-symbols-outlined
   top: 6.5px;
   padding: 3px;
 }
+.icon 
+{
+  width: 1em;
+  height: 1em;
+  vertical-align: -.125em;
+}
 
 /* -------------- Color Theme --------------- */
 :root {

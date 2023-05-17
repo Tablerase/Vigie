@@ -7,11 +7,15 @@ from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from datetime import datetime
+# external py addons
 from helpers import apology, login_required
 
+# tools
+from datetime import datetime
+import json
+
 # api scrap data
-from scrap import twitter_hashtag
+
 
 # post
 from post import tweet_create
@@ -28,17 +32,29 @@ Session(app)
 
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///vigie.db")
-db.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT NOT NULL, hash TEXT NOT NULL)")
 
-# Make sure API key is set
-#if not os.environ.get("API_KEY"):
-#    raise RuntimeError("API_KEY not set")
+'''CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    username TEXT NOT NULL, 
+    hash TEXT NOT NULL
+);'''
+'''CREATE TABLE "post" (
+	"id"	INTEGER,
+	"content"	TEXT NOT NULL,
+	"publish"	TEXT NOT NULL,
+	"userid"	INTEGER,
+	"date"	TEXT NOT NULL,
+	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("userid") REFERENCES "users"("id")
+);'''
 
 # set time
 # datetime object containing current date and time
 now = datetime.now()  # now = 2022-12-27 10:09:20.430322
 # dd/mm/YY H:M:S
 dt_string = now.strftime("%d/%m/%Y %H:%M:%S")  # date and time = 27/12/2022 10:09:20
+dates = now.strftime('%d/%m/%Y') # dd/mm/YY
+times = now.strftime('%H:%M:%S') # H:M:S
 
 
 @app.after_request
@@ -141,10 +157,51 @@ def register():
             passwordh = generate_password_hash(password)  # hash password
             db.execute("INSERT INTO users(username, hash) VALUES(? , ?)", regname, passwordh)
             return redirect("/")
-        
+
+
+@app.route("/post", methods=["GET", "POST"])
+@login_required
+def post():
+    userid = session["user_id"]
+    # get register html form
+    if request.method == "GET":
+        # gather db of past post for log userid
+        return render_template("post.html")
+    # post via form content
+    elif request.method == "POST":
+        # Get form data
+        text = request.form.get("texttopost")
+        if text == None:
+            return apology("You must write a text to be publish")
+        # Get sociales to post to
+        tweet = request.form.get("tweet-form")
+        insta = request.form.get("insta-form")
+        # Check if sociales are select
+        check = bool(tweet) + bool(insta)
+        if check == False: 
+            return apology("You must choose where to publish")
+        else:
+            # Post depending of social
+            publish = {}
+            if bool(tweet) == True:
+                print(f"Tweet {tweet}")
+                r = tweet_create(text)
+                twitter_link = r['link']
+                twitter_id = r['id']
+                publish.update({'Twitter': twitter_id, 'link': twitter_link})
+            if bool(insta) == True:
+                print(f"Insta {insta}")
+                publish.append('Instagram')
+
+            # Database save
+            publish_json = json.dumps(publish)
+            db.execute("INSERT INTO post(content, publish, userid, date) VALUES (?, ?, ?, ?)", text, publish_json, userid, dt_string)
+            print(dt_string, publish)
+
+            return redirect("/post")
+
 
 @app.route("/tweet/create", methods=["GET", "POST"])
 @login_required
 def tweet():
-    
-    return redirect("/post.html")
+    return redirect("/post")

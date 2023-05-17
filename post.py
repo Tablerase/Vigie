@@ -23,7 +23,7 @@ def tweet_create(msg):
     response = twitter.create_tweet(
         text=f"{msg}"
     )
-    resplist = {"id":response.data['id'], "text":response.data['text']}
+    resplist = {"id":response.data['id'], "text":response.data['text'], "link": f"https://twitter.com/user/status/{response.data['id']}"}
     return resplist
 
 '''

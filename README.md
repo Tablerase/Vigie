@@ -9,8 +9,8 @@ Social media aggregator project - Local webapp
 * alerts who is talking about your content
 
 ## Resources
-* API Twitter
-* API Reddit (:ledger:)[https://www.reddit.com/prefs/apps]
+* API Twitter [:ledger:](https://developer.twitter.com/en/products/twitter-api)
+* API Reddit [:ledger:](https://www.reddit.com/prefs/apps)
   * script 
 
 ## Config

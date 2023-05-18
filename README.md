@@ -10,7 +10,7 @@ Social media aggregator project - Local webapp
 
 ## Resources
 * API Twitter
-* API Reddit [https://www.reddit.com/prefs/apps]
+* API Reddit (:ledger:)[https://www.reddit.com/prefs/apps]
   * script 
 
 ## Config

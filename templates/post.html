@@ -11,8 +11,11 @@
 
                 <div class="mb-3">
                     <label for="texttopost" class="form-label"><h2>Type your post</h2></label>
-                    <input type="text" class="form-control" id="content-title" placeholder="Type your title here">
-                    <textarea class="form-control" aria-label="With textarea" placeholder="Write here your post, it will be sent to the Sociales of your chosing." aria-describedby="posthelp" id="texttopost" name="texttopost" required></textarea>
+                    <input type="text" class="form-control mb-3" id="content-title" placeholder="Type your title here">
+                    <div class="position-relative">
+                    <textarea class="form-control" aria-label="With textarea" placeholder="Write here your post, it will be sent to the Sociales of your chosing." aria-describedby="posthelp" id="texttopost" name="texttopost" required oninput="checkLength()"></textarea>
+                    <count id="charCount" class="fst-italic text-muted">0</count>
+                    </div>
                     <div id="posthelp" class="form-text">Characters limits depending of which Sociales you select</div>
                 </div>
 
@@ -54,6 +57,32 @@
                     myElement.style.display = "none";
                     }
                 });
+            </script>
+            <script>
+                var maxLength = 280;
+                // check for twitter
+                document.getElementById("tweet-form").addEventListener("change", function() {
+                    var myElement = document.getElementById("charCount");
+                    if (this.checked) {
+                        myElement.style.display = "block";
+                        maxLength = 280;
+                    } 
+                    else {
+                    myElement.style.display = "none";
+                    maxLength = 2000;
+                    }
+                });
+                // enforce check lenght
+                document.getElementById("texttopost").addEventListener("input", checkLength);
+                // lenght count
+                function checkLength() {
+                    var myTextarea = document.getElementById("texttopost");
+                    var charCount = document.getElementById("charCount");
+                    if (myTextarea.value.length > maxLength) {
+                    myTextarea.value = myTextarea.value.substring(0, maxLength);
+                    }
+                    charCount.innerHTML = myTextarea.value.length;
+                }
             </script>
         </div>
 

@@ -8,8 +8,10 @@
     <div class="row justify-content-evenly">
         <div class="col-md-5 shadow p-3 mb-5 bg-body rounded">
             <form action="/post" method="post">
+
                 <div class="mb-3">
                     <label for="texttopost" class="form-label"><h2>Type your post</h2></label>
+                    <input type="text" class="form-control" id="content-title" placeholder="Type your title here">
                     <textarea class="form-control" aria-label="With textarea" placeholder="Write here your post, it will be sent to the Sociales of your chosing." aria-describedby="posthelp" id="texttopost" name="texttopost" required></textarea>
                     <div id="posthelp" class="form-text">Characters limits depending of which Sociales you select</div>
                 </div>
@@ -42,6 +44,17 @@
                 <br>
                 <button type="submit" class="btn btn-lg btn-primary shadow">Submit</button>
             </form>
+            <script>
+                // hide title when not supported by API
+                document.getElementById("reddit-form").addEventListener("change", function() {
+                    var myElement = document.getElementById("content-title");
+                    if (this.checked) {
+                    myElement.style.display = "block";
+                    } else {
+                    myElement.style.display = "none";
+                    }
+                });
+            </script>
         </div>
 
         <div class="col-md-5 shadow p-3 mb-5 bg-body rounded">

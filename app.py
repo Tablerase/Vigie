@@ -175,9 +175,9 @@ def post():
             return apology("You must write a text to be publish")
         # Get sociales to post to
         tweet = request.form.get("tweet-form")
-        insta = request.form.get("insta-form")
+        reddit = request.form.get("reddit-form")
         # Check if sociales are select
-        check = bool(tweet) + bool(insta)
+        check = bool(tweet) + bool(reddit)
         if check == False: 
             return apology("You must choose where to publish")
         else:
@@ -189,9 +189,9 @@ def post():
                 twitter_link = r['link']
                 twitter_id = r['id']
                 publish.update({'Twitter': twitter_id, 'link': twitter_link})
-            if bool(insta) == True:
-                print(f"Insta {insta}")
-                publish.append('Instagram')
+            if bool(reddit) == True:
+                print(f"reddit {reddit}")
+                publish.update({'Reddit':''})
 
             # Database save
             publish_json = json.dumps(publish)

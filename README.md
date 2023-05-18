@@ -9,7 +9,9 @@ Social media aggregator project - Local webapp
 * alerts who is talking about your content
 
 ## Resources
-...
+* API Twitter
+* API Reddit [https://www.reddit.com/prefs/apps]
+  * script 
 
 ## Config
 * make a file call `config.ini`

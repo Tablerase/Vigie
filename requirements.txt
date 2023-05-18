@@ -13,7 +13,8 @@ cs50
     python-twitter
     # - alternatives for web-site full integration
         tweepy
-
+    # reddit
+    praw
     # multy scraper
     snscrape
         # api twitter not supported since api 2023 paid update

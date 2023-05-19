@@ -26,6 +26,13 @@ span.material-symbols-outlined
   right: 8px;
 }
 
+/* tables */
+table
+{
+  table-layout: auto;
+  max-width: inherit;
+}
+
 /* -------------- Color Theme --------------- */
 :root {
     --primary:#FFA957;
@@ -57,7 +64,7 @@ h2
 {
   text-align: center;
   padding: 6px;
-  color: var(--secondary, purple);
+  color: var(--primary, purple);
 }
 
 

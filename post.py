@@ -57,7 +57,7 @@ def reddit_create(msg, title_reddit):
     sub = "Tablerase"
     subreddit = reddit.subreddit(sub)
     # submit content
-    submission = subreddit.submit(title= title_reddit, selftext= msg)
+    submission = subreddit.submit(title=title_reddit, selftext=msg)
 
-    resplist = {"id":submission.id, "text": f"{title_reddit} {msg}", "link": f"https://reddit.com{submission.permalink}"}
+    resplist = {"id":submission.id, "link": f"https://reddit.com{submission.permalink}"}
     return resplist

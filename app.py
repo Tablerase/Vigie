@@ -14,14 +14,16 @@ from helpers import apology, login_required
 from datetime import datetime
 import json
 
-# api scrap data
-
-
 # post
-from post import tweet_create
+from post import tweet_create, reddit_create
+
 
 # Configure application
 app = Flask(__name__)
+
+# Add some jinja functions
+# zip allow to tuple and use multiple list in for loops
+app.jinja_env.globals['zip'] = zip
 
 # Custom filter
 
@@ -166,7 +168,12 @@ def post():
     # get register html form
     if request.method == "GET":
         # gather db of past post for log userid
-        return render_template("post.html")
+        postdb = db.execute("SELECT content, publish, date FROM post WHERE userid= ? ORDER BY date DESC", userid)
+        publish_list = []
+        for row in postdb:
+            publish_row = json.loads(row['publish'])
+            publish_list.append(publish_row)
+        return render_template("post.html", postdb= postdb, publish=publish_list)
     # post via form content
     elif request.method == "POST":
         # Get form data
@@ -182,22 +189,30 @@ def post():
             return apology("You must choose where to publish")
         else:
             # Post depending of social
-            publish = {}
+            publish = {'link':[]}
             if bool(tweet) == True:
-                print(f"Tweet {tweet}")
-                r = tweet_create(text)
-                twitter_link = r['link']
-                twitter_id = r['id']
-                publish.update({'Twitter': twitter_id, 'link': twitter_link})
+                if len(text) > 280:
+                    return apology("Content to long to be supported by Tweeter free API")
+                else:
+                    r = tweet_create(text)
+                    twitter_link = r['link']
+                    twitter_id = r['id']
+                    publish.update({'Twitter': twitter_id})
+                    publish['link'].append(twitter_link)
             if bool(reddit) == True:
-                print(f"reddit {reddit}")
-                publish.update({'Reddit':''})
-
+                reddit_title = request.form.get("content-title")
+                if reddit_title == None:
+                    return apology("You must add a title if you want to publish on Reddit")
+                else:
+                    reddit_result = reddit_create(text, reddit_title)
+                    reddit_id = reddit_result['id']
+                    reddit_link = reddit_result['link']
+                    publish.update({'Reddit':reddit_id, 'Title': reddit_title})
+                    publish['link'].append(reddit_link)
+                
             # Database save
             publish_json = json.dumps(publish)
             db.execute("INSERT INTO post(content, publish, userid, date) VALUES (?, ?, ?, ?)", text, publish_json, userid, dt_string)
-            print(dt_string, publish)
-
             return redirect("/post")
 
 

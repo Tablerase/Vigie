@@ -3,4 +3,5 @@
 *__pycache__
 *.incapacited
 /incapacited
+/flask_session
 config.ini

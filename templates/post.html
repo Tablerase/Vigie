@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block main %}
+<div class="container-fluid">
     <div class="row justify-content-evenly">
         <div class="col-md-5 shadow p-3 mb-5 bg-body rounded">
             <form action="/post" method="post">
-
                 <div class="mb-3">
                     <label for="texttopost" class="form-label"><h2>Type your post</h2></label>
                     <input type="text" class="form-control mb-3" id="content-title" name="content-title" placeholder="Type your title here">
@@ -127,4 +127,6 @@
             </table>
         </div>
     </div>
+    <img src="/static/Media/post social.svg" draggable="false" alt="background light house Sociales" style="position: fixed; bottom: -5px; right: 10px; max-width: 280px; z-index: 1;" width="30%">
+</div>
 {% endblock %}

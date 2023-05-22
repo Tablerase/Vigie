@@ -32,6 +32,11 @@ table
   table-layout: auto;
   max-width: inherit;
 }
+@media screen and (max-width: 560px) {
+  table {
+    table-layout: fixed;
+  }
+}
 
 /* -------------- Color Theme --------------- */
 :root {
@@ -47,11 +52,6 @@ table
 header
 {
   padding-bottom: 50px;
-}
-
-body
-{
-  margin: 50px;
 }
 
 h1

@@ -26,11 +26,11 @@ Social media bot project - Local webapp
          - Linux/macOS: `source env/bin/activate`
    - or launch dockerfile
 3. Run `flask run` in terminal(.env) inside your app folder
-4. Go to (http://127.0.0.1:5000)
+4. Go to http://127.0.0.1:5000
 5. Register/Login a user account
 6. Setup API 
    - go to ressource API of your choice
-   - them input your credentials (http://127.0.0.1:5000/api)
+   - them input your credentials http://127.0.0.1:5000/api
 7. Use the current app as you please and add features if you think you can make it better :octocat:
 
 ## Config for now

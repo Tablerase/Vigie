@@ -40,6 +40,15 @@ span.material-symbols-outlined
   color: inherit;
 }
 
+/* youtube embed frame */
+.lighthouse-frame {
+  background-image: url('/static/Media/cadre yt.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+
 /* count */
 #charCount {
   position: absolute;

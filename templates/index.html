@@ -5,5 +5,148 @@
 {% endblock %}
 
 {% block main %}
-    
+<style>
+    .framebackground
+    {
+        position: absolute; 
+        top: 0px; 
+        left: 0px; 
+        width: 100%; 
+        z-index: -1;
+    }
+    .ytembed
+    {
+        position: absolute; 
+        top: 0px; 
+        left: 0px; 
+        width: 580px;
+    }
+    @media only screen and (max-width: 2560px) {
+        .ytembed {
+            height: 50%;
+            position: absolute;
+            top: 580px;
+            left: 647px;
+            width: 48.5%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 80px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+    @media only screen and (max-width: 1920px) {
+        .ytembed {
+            height: 50.5%;
+            position: absolute;
+            top: 371px;
+            left: 481px;
+            width: 49%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+    @media only screen and (max-width: 1440px) {
+        .ytembed {
+            height: 50.5%;
+            position: absolute;
+            top: 278px;
+            left: 358px;
+            width: 49%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+    @media only screen and (max-width: 1400px) {
+        .ytembed {
+            height: 50.5%;
+            position: absolute;
+            top: 269px;
+            left: 349px;
+            width: 49%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+    @media only screen and (max-width: 1024px) {
+        .ytembed {
+            height: 50.5%;
+            position: absolute;
+            top: 196px;
+            left: 253px;
+            width: 49%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .ytembed {
+            height: 50.5%;
+            position: absolute;
+            top: 145px;
+            left: 188px;
+            width: 49%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+    @media only screen and (max-width: 425px) {
+        .ytembed {
+            height: 50.5%;
+            position: absolute;
+            top: 79px;
+            left: 102px;
+            width: 49%;
+        }
+        .framebackground
+        {
+            position: absolute; 
+            top: 0px; 
+            left: 0px; 
+            width: 100%; 
+            z-index: -1;
+        }
+    }
+</style>
+<div class="text-center">
+    <div class="position-relative">
+        <img src="/static/Media/cadre_yt.svg" alt="background" draggable="false" class="framebackground">
+        <div class="ratio ratio-16x9">
+            <iframe class="rounded-3 ytembed" src="https://www.youtube.com/embed/FFiMBOAiyB4" title="YouTube video" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
 {% endblock %}

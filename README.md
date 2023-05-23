@@ -14,7 +14,7 @@ Social media bot project - Local webapp
 ## Resources
 * API Twitter [:ledger:](https://developer.twitter.com/en/products/twitter-api)
 * API Reddit [:ledger:](https://www.reddit.com/prefs/apps)
-  * script 
+  * script (To use reddit post create a personal use script)
 
 ## Installation
 1. get source code 

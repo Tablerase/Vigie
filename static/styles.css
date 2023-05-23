@@ -60,11 +60,32 @@ span.material-symbols-outlined
 table
 {
   table-layout: auto;
-  max-width: inherit;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 }
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 768px) {
   table {
     table-layout: fixed;
+  }
+  th
+  {
+    padding: none;
+  }
+  th:nth-child(1)
+  {
+    width: 20%;
+  }
+  th:nth-child(2)
+  {
+    width: 7%;
+  }
+  th:nth-child(3)
+  {
+    width: 60%;
+  }
+  th:nth-child(4)
+  {
+    width: 13%;
   }
 }
 

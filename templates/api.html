@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    API info
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <div class="row justify-content-evenly">
+        <div class="col-md-5 shadow p-3 mb-5 border border-2 border-info rounded twitter-bg-stroke position-relative" style="color: #1DA1F2;">
+            <form action="/api" method="post">
+                <p class="fs-1 text-start m-2 text-info">Twitter App</p>
+                <input type="text" class="form-control mb-2 border-info" name="twitter-key" placeholder="api key: {{ twitter_key }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-info" name="twitter-key-secret" placeholder="api key secret: {{ twitter_key_secret }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-info" name="twitter-token" placeholder="access token: {{ twitter_token }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-info" name="twitter-token-secret" placeholder="access token secret: {{ twitter_token_secret }}" value="" autocomplete="off">
+                <button type="submit" class="btn btn-lg btn-info m-2">Update</button>
+            </form>
+            <a class="app-reference-links" href="https://developer.twitter.com/en/portal/dashboard" target="_blank" role="button" title="Twitter apps">
+                <span class="material-symbols-outlined">settings_b_roll</span>
+            </a>
+        </div>
+        <div class="col-md-5 shadow p-3 mb-5 border border-2 border-danger rounded reddit-bg-stroke position-relative" style="color: rgb(255, 69, 0);">
+            <form action="/api" method="post">
+                <p class="fs-1 text-start m-2 text-danger">Reddit Script</p>
+                <input type="text" class="form-control mb-2 border-danger" name="reddit-id" placeholder="api id: {{ reddit_id }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-danger" name="reddit-secret" placeholder="api key secret: {{ reddit_secret }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-danger" name="reddit-agent" placeholder="user agent: {{ reddit_agent }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-danger" name="reddit-username" placeholder="username: {{ reddit_username }}" value="" autocomplete="off">
+                <input type="text" class="form-control mb-2 border-danger" name="reddit-password" placeholder="account password: {{ reddit_password }}" value="" autocomplete="off">
+                <button type="submit" class="btn btn-lg btn-danger m-2">Update</button>
+            </form>
+            <a class="app-reference-links" href="https://www.reddit.com/prefs/apps" target="_blank" role="button" title="Reddit apps">
+                <span class="material-symbols-outlined">settings_b_roll</span>
+            </a>
+        </div>
+    </div>
+    <img src="/static/Media/post social.svg" draggable="false" alt="background light house Sociales" style="position: fixed; bottom: -5px; right: 10px; max-width: 280px; z-index: 1;" width="30%">
+</div>
+{% endblock %}

@@ -1,26 +1,22 @@
 import tweepy
-import configparser
 import praw
+import json
+from cs50 import SQL
+db = SQL("sqlite:///vigie.db")
 
-#read configs
-config  = configparser.ConfigParser()
-config.read('config.ini')
-
-#twitter configs
-bearer = config['twitter']['bearer']
-twitter_c_key = config['twitter']['api_key']
-twitter_c_key_secret = config['twitter']['api_key_secret']
-twitter_a_token = config['twitter']['access_token']
-twitter_a_token_secret = config['twitter']['access_token_secret']
-#reddit configs
-reddit_id = config['reddit']['client_id']
-reddit_secret = config['reddit']['client_secret']
-reddit_agent = config['reddit']['user_agent']
-reddit_name = config['reddit']['username']
-reddit_passwrd = config['reddit']['password']
 
 # https://docs.tweepy.org/en/stable/client.html#tweepy.Client.create_tweet
-def tweet_create(msg):
+def tweet_create(msg, userid):
+    apiencrypted = db.execute("SELECT api FROM users WHERE id= ?", userid)
+    apidecrypted = apiencrypted
+    apidecrypted = apidecrypted[0]['api']
+    api_data = json.loads(apidecrypted)
+    #twitter configs
+    twitter_c_key = api_data['twitter_key']
+    twitter_c_key_secret = api_data['twitter_key_secret']
+    twitter_a_token = api_data['twitter_token']
+    twitter_a_token_secret = api_data['twitter_token_secret']
+
     twitter = tweepy.Client(
         consumer_key=twitter_c_key,
         consumer_secret=twitter_c_key_secret,
@@ -45,7 +41,18 @@ def tweet_poll(msg, poll_option_list, poll_duration):
 '''
 
 # https://praw.readthedocs.io/en/stable/code_overview/other/submissionmoderation.html
-def reddit_create(msg, title_reddit):
+def reddit_create(msg, title_reddit, userid):
+    apiencrypted = db.execute("SELECT api FROM users WHERE id= ?", userid)
+    apidecrypted = apiencrypted
+    apidecrypted = apidecrypted[0]['api']
+    api_data = json.loads(apidecrypted)
+    #reddit configs
+    reddit_id = api_data['reddit_id']
+    reddit_secret = api_data['reddit_secret']
+    reddit_agent = api_data['reddit_agent']
+    reddit_name = api_data['reddit_name']
+    reddit_passwrd = api_data['reddit_passwrd']
+    
     reddit = praw.Reddit(
         client_id = reddit_id,
         client_secret = reddit_secret,

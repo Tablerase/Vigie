@@ -1,10 +1,8 @@
-import os
 
 # basics packages for flask site
 from cs50 import SQL
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
-from tempfile import mkdtemp
 from werkzeug.security import check_password_hash, generate_password_hash
 
 # external py addons
@@ -17,7 +15,6 @@ import json
 # post
 from post import tweet_create, reddit_create
 
-
 # Configure application
 app = Flask(__name__)
 
@@ -25,7 +22,6 @@ app = Flask(__name__)
 # zip allow to tuple and use multiple list in for loops
 app.jinja_env.globals['zip'] = zip
 
-# Custom filter
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
@@ -38,7 +34,8 @@ db = SQL("sqlite:///vigie.db")
 '''CREATE TABLE users (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
     username TEXT NOT NULL, 
-    hash TEXT NOT NULL
+    hash TEXT NOT NULL,
+    api	TEXT,
 );'''
 '''CREATE TABLE "post" (
 	"id"	INTEGER,
@@ -118,10 +115,8 @@ def login():
 @app.route("/logout")
 def logout():
     """Log user out"""
-
     # Forget any user_id
     session.clear()
-
     # Redirect user to login form
     return redirect("/")
 
@@ -194,7 +189,7 @@ def post():
                 if len(text) > 280:
                     return apology("Content to long to be supported by Tweeter free API")
                 else:
-                    r = tweet_create(text)
+                    r = tweet_create(text, userid)
                     twitter_link = r['link']
                     twitter_id = r['id']
                     publish.update({'Twitter': twitter_id})
@@ -204,7 +199,7 @@ def post():
                 if reddit_title == None:
                     return apology("You must add a title if you want to publish on Reddit")
                 else:
-                    reddit_result = reddit_create(text, reddit_title)
+                    reddit_result = reddit_create(text, reddit_title, userid)
                     reddit_id = reddit_result['id']
                     reddit_link = reddit_result['link']
                     publish.update({'Reddit':reddit_id, 'Title': reddit_title})
@@ -216,7 +211,82 @@ def post():
             return redirect("/post")
 
 
-@app.route("/tweet/create", methods=["GET", "POST"])
+@app.route("/api", methods=["GET", "POST"])
 @login_required
-def tweet():
-    return redirect("/post")
+def api():
+    userid = session["user_id"]
+    # get register html form
+    if request.method == "GET":
+        # Query the database to get user api
+        apiencrypted = db.execute("SELECT api FROM users WHERE id= ?", userid)
+        # if API infos is empty
+        if apiencrypted[0]['api'] == None:
+            api = {
+                    # twitter
+                    'twitter_key': '',
+                    'twitter_key_secret': '',
+                    'twitter_token': '',
+                    'twitter_token_secret': '',
+                    # reddit
+                    'reddit_id': '',
+                    'reddit_secret': '',
+                    'reddit_agent': '',
+                    'reddit_name': '',
+                    'reddit_passwrd': ''
+                }
+            # Convert the dictionary into a JSON string
+            api_json = json.dumps(api)
+            db.execute("UPDATE users SET api = ? WHERE id = ?", api_json, userid)
+            apiencrypted = db.execute("SELECT api FROM users WHERE id= ?", userid)
+        # TODO: decrypte json with fermet
+        apidecrypted =  apiencrypted
+        apidecrypted = apidecrypted[0]['api']
+        # Extract the data
+        api_data = json.loads(apidecrypted)
+        # api_data = apidecrypted
+        twitter_key = api_data['twitter_key']
+        twitter_key_secret = api_data['twitter_key_secret']
+        twitter_token = api_data['twitter_token']
+        twitter_token_secret = api_data['twitter_token_secret']
+        reddit_id = api_data['reddit_id']
+        reddit_secret = api_data['reddit_secret']
+        reddit_agent = api_data['reddit_agent']
+        reddit_username = api_data['reddit_name']
+        reddit_password = api_data['reddit_passwrd']
+        return render_template("api.html", reddit_id=reddit_id, reddit_secret=reddit_secret, reddit_agent=reddit_agent, reddit_username=reddit_username, reddit_password=reddit_password ,twitter_key=twitter_key, twitter_key_secret=twitter_key_secret, twitter_token=twitter_token, twitter_token_secret=twitter_token_secret)
+    
+    # api update/post info
+    elif request.method == "POST":
+        # Get the current API data from the database
+        apiencrypted = db.execute("SELECT api FROM users WHERE id= ?", userid)
+        apidecrypted = apiencrypted
+        apidecrypted = apidecrypted[0]['api']
+        api_data = json.loads(apidecrypted)
+
+        # Update the API data with the new values from the form
+        if request.form.get("twitter-key") and request.form.get("twitter-key") != api_data['twitter_key']:
+            api_data['twitter_key'] = request.form.get("twitter-key")
+        if request.form.get("twitter-key-secret") and request.form.get("twitter-key-secret") != api_data['twitter_key_secret']:
+            api_data['twitter_key_secret'] = request.form.get("twitter-key-secret")
+        if request.form.get("twitter-token") and request.form.get("twitter-token") != api_data['twitter_token']:
+            api_data['twitter_token'] = request.form.get("twitter-token")
+        if request.form.get("twitter-token-secret") and request.form.get("twitter-token-secret") != api_data['twitter_token_secret']:
+            api_data['twitter_token_secret'] = request.form.get("twitter-token-secret")
+        if request.form.get("reddit-id") and request.form.get("reddit-id") != api_data['reddit_id']:
+            api_data['reddit_id'] = request.form.get("reddit-id")
+        if request.form.get("reddit-secret") and request.form.get("reddit-secret") != api_data['reddit_secret']:
+            api_data['reddit_secret'] = request.form.get("reddit-secret")
+        if request.form.get("reddit-agent") and request.form.get("reddit-agent") != api_data['reddit_agent']:
+            api_data['reddit_agent'] = request.form.get("reddit-agent")
+        if request.form.get("reddit-username") and request.form.get("reddit-username") != api_data['reddit_name']:
+            api_data['reddit_name'] = request.form.get("reddit-username")
+        if request.form.get("reddit-password") and request.form.get("reddit-password") != api_data['reddit_passwrd']:
+            api_data['reddit_passwrd'] = request.form.get("reddit-password")
+
+        # Convert the updated API data back to a JSON string
+        api_json = json.dumps(api_data)
+        print(api_data)
+        # Update the database with the new API data
+        db.execute("UPDATE users SET api = ? WHERE id = ?", api_json, userid)
+
+        return redirect("/api")

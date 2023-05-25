@@ -1,5 +1,5 @@
 # Vigie
-<img src="/static/Media/Logo%20Vigie.svg" alt="logo for Vigie" title="Vigie" width="25%" align="right"/>
+<img src="/static/Media/Logo_Vigie.svg" alt="logo for Vigie" title="Vigie" width="25%" align="right"/>
 Social media bot project - Local webapp
 
 ## Functions

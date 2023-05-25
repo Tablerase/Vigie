@@ -37,3 +37,9 @@ Social media bot project - Local webapp
 ## Config for now
 * Access API page
   * add your differents keys inside of it
+
+
+## Git hide database update
+If you want to keep the `vigie.db` file in your repository but prevent it from being updated, you can use `git update-index --assume-unchanged vigie.db`. This will tell Git to temporarily ignore changes to the `vigie.db` file. The file will remain in the repository and will not be updated until you run `git update-index --no-assume-unchanged vigie.db` to start tracking changes again.
+
+Please note that this is a local setting and will only apply to your local repository. Other users who clone the repository will still see changes to the `vigie.db` file unless they also run the `git update-index --assume-unchanged` command.

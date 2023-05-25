@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block main %}
+<section style="padding-top: 50px;">
     <form action="/login" method="post">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
@@ -15,4 +16,5 @@
         <button class="btn btn-primary" type="submit">Log In</button>
     </form>
     <img src="/static/Media/light_house.svg" draggable="false" alt="background light house" class="position-absolute start-0 bottom-0" height="50%">
+</section>
 {% endblock %}

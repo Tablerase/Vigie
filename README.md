@@ -10,6 +10,7 @@ Social media bot project - Local webapp
 * gather sociales at one place to prevent waste of time
 * manage your scraped data localy
 * alerts who is talking about your content
+* add fermet to hash json inside database
 
 ## Resources
 * API Twitter [:ledger:](https://developer.twitter.com/en/products/twitter-api)
@@ -17,7 +18,7 @@ Social media bot project - Local webapp
   * script (To use reddit post create a personal use script)
 
 ## Installation
-1. get source code 
+1. Get source code 
 2. Setup:
    - have python3 and pip installed on your computer/serve [:snake:](https://cloud.google.com/python/docs/setup)
      - go to `requirements.txt` in source code and setup your dev environement for the server (recommend via VScode after installing python3)

@@ -39,6 +39,13 @@ span.material-symbols-outlined
   right: 4px;
   color: inherit;
 }
+.top-right-icon
+{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: inherit;
+}
 
 /* youtube embed frame */
 .lighthouse-frame {

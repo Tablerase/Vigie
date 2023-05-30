@@ -5,7 +5,7 @@ Social media bot project - Local webapp
 ## Functions
 * post content on multiple plateform
 
-## Objectives finals
+## Objectives to achieve
 * gather data around your content
 * gather sociales at one place to prevent waste of time
 * manage your scraped data localy

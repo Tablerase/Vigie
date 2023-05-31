@@ -43,3 +43,6 @@ Social media bot project - Local webapp
 If you want to keep the `vigie.db` file in your repository but prevent it from being updated, you can use `git update-index --assume-unchanged vigie.db`. This will tell Git to temporarily ignore changes to the `vigie.db` file. The file will remain in the repository and will not be updated until you run `git update-index --no-assume-unchanged vigie.db` to start tracking changes again.
 
 Please note that this is a local setting and will only apply to your local repository. Other users who clone the repository will still see changes to the `vigie.db` file unless they also run the `git update-index --assume-unchanged` command.
+
+## Original problem
+I dont like to go to all different sociales to check my private msg or check if i got tag somewhere. My objective was to make a free solution to gather my social at one place. I got stuck in first by twitter api paywall to access mp even my own via there api (twitter is my main social activity service), so i had to change my approach to make my research on API not turn to waste so i made, the actual implementation that you have. 
